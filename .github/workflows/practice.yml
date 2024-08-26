@@ -2,7 +2,7 @@ name : lint test deploy on push
 on   : push
 jobs :
    lint    :
-        runs-on : ubuntu latest
+        runs-on : ubuntu-latest
         steps   :
             - name : install node js
               uses : actions/setup-node@v4
