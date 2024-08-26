@@ -4,6 +4,8 @@ jobs :
    lint    :
         runs-on : ubuntu-latest
         steps   :
+            - name : get the code
+              run  : actions/checkout@v4
             - name : install node js
               uses : actions/setup-node@v4
               with :
@@ -16,6 +18,8 @@ jobs :
         needs   : lint
         runs-on : ubuntu latest
         steps   :
+            - name : get the code
+              run  : actions/checkout@v4
             - name : install node js
               uses : actions/setup-node@v4
               with :
@@ -28,6 +32,8 @@ jobs :
         needs   : test
         runs-on : ubuntu latest
         steps   :
+            - name : get the code
+              run  : actions/checkout@v4
             - name : install node js
               uses : actions/setup-node@v4
               with :
