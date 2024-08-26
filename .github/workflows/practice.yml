@@ -1,0 +1,41 @@
+name : lint test deploy on push
+on   : push
+jobs :
+   lint    :
+        runs-on : ubuntu latest
+        steps   :
+            - name : install node js
+              uses : actions/setup-node@v4
+              with :
+                node-version : 22
+            - name : install dependencies
+              run  : npm install
+            - name : run linters
+              run  : npm run lint
+   test    :
+        needs   : lint
+        runs-on : ubuntu latest
+        steps   :
+            - name : install node js
+              uses : actions/setup-node@v4
+              with :
+                node-version : 22
+            - name : install dependencies
+              run  : npm install
+            - name : run test
+              run  : npm run test
+   deploy    :
+        needs   : test
+        runs-on : ubuntu latest
+        steps   :
+            - name : install node js
+              uses : actions/setup-node@v4
+              with :
+                node-version : 22
+            - name : install dependencies
+              run  : npm install
+            - name : build
+              run  : npm run build
+            - name : deploy project
+              run  : echo "deploy the project"
+
